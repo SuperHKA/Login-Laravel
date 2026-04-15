@@ -1,58 +1,129 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laboratorio: Autenticación en Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Prerrequisitos (Entorno de Desarrollo)
 
-## About Laravel
+Para la ejecución de este laboratorio se requiere el siguiente ecosistema de desarrollo:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+*   **PHP:** Versión 8.0 o superior ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=flat&logo=php&logoColor=white)
+*   **Composer:** Última versión estable ![Composer](https://img.shields.io/badge/composer-%23000000.svg?style=flat&logo=composer&logoColor=white)
+*   **Laravel:** Creado con `composer create-project laravel/laravel` ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white)
+*   **Entorno Local:** Paquete de servidor web local (WampServer) ![WampServer](https://img.shields.io/badge/wampserver-%23FF0000.svg?style=flat&logo=wamp&logoColor=white)
+*   **Servidor Web:** Apache
+*   **Base de Datos:** MySQL / MariaDB ![MySQL](https://img.shields.io/badge/mysql-%2300000f.svg?style=flat&logo=mysql&logoColor=white)
+*   **Editor de Código:** Visual Studio Code ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
+*   **Gestor de Paquetes Node:** NPM ![NPM](https://img.shields.io/badge/npm-%23CB3837.svg?style=flat&logo=npm&logoColor=white)
+*   **Sistema Operativo:** Windows
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 2. Introducción y Objetivo del Laboratorio
 
-## Learning Laravel
+**Objetivo:** Implementar un sistema de autenticación utilizando Laravel, configurando la base de datos, migraciones y dependencias necesarias para gestionar el registro y acceso de usuarios.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Arquitectura MVC en Laravel:**
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+La arquitectura Modelo-Vista-Controlador (MVC) organiza el código en tres capas principales:
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+*   **Carpetas Principales:**
+    *   `app/Models/`: Contiene los Modelos, que interactúan de forma directa con la base de datos utilizando el ORM Eloquent.
+    *   `app/Http/Controllers/`: Contiene los Controladores, encargados de recibir las peticiones, procesar la lógica y retornar una respuesta a la vista.
+    *   `resources/views/`: Almacena las Vistas (archivos `.blade.php`), que son las interfaces de usuario que muestran la información en el navegador.
+    *   `routes/`: Define las rutas de la aplicación web, conectando URLs específicas con sus respectivos controladores y métodos.
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## 3. Instalación de Dependencias y Configuración
+
+Secuencia de comandos utilizados para la instalación del proyecto y dependencias de autenticación:
 
 ```bash
-composer require laravel/boost --dev
 
-php artisan boost:install
+# Instalación del paquete Laravel UI (Autenticación)
+composer require laravel/ui
+
+# Instalación del proyecto Laravel
+composer create-project laravel/laravel LoginLaravel || laravel new LoginLaravel
+
+# Generación de scaffolding de autenticación con Bootstrap
+php artisan ui bootstrap --auth
+
+# Instalación de dependencias de Node.js y compilación de assets
+npm install && npm run dev
+
+# Correr el panel de Laravel, es recomendado de iniciarlo en otra pestaña de terminal.
+php artisan serve 
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 4. Base de Datos, Entorno y Migraciones
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**Configuración del entorno (.env):**
+Se configuraron las credenciales de la base de datos MySQL en el archivo `.env` del proyecto:
+(Puede llamar a la base de datos "laravel")
 
-## Code of Conduct
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=<nombre_de_la_base_de_datos> 
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**Migraciones:**
+Laravel utiliza migraciones para controlar las versiones de la base de datos. Para construir las tablas requeridas por el sistema de autenticación, se ejecutó el siguiente comando:
 
-## Security Vulnerabilities
+```bash
+php artisan migrate
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**Problemas con la base de datos no creándose porque ya existe o tiene una configuración incorrecta:**
+# Esto borra toda la base de datos.
+```bash
+php artisan db:wipe
+```
+# y después corre 
+```bash
+php artisan migrate
+```
+---
 
-## License
+## 5. Resultado del Laboratorio
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Resultado de Autenticación]()
+*(Nota: Inserte aquí la imagen con el resultado visible de la pantalla de Login/Registro)*
+
+---
+
+## 6. Dificultades y Soluciones
+
+*   **Desafío:** (Ejemplo: Archivo .env no configurado correctamente al inicio).
+*   **Solución:** (Ejemplo: Revisión y ajuste de los puertos y credenciales de MySQL en el sistema WampServer).
+
+*   **Desafío:** (Ejemplo: Problemas con la compilación de activos usando Vite/NPM).
+*   **Solución:** (Ejemplo: Asegurarse de tener Node actualizado y ejecutar npm run dev adecuadamente).
+
+---
+
+## 7. Referencias
+
+*   Documentación Oficial de Laravel: https://laravel.com/docs
+*   Material de apoyo del curso.
+
+---
+
+## 8. Fecha de Ejecución del Laboratorio
+
+**Fecha:** 8 de abril de 2026
+
+---
+
+## 9. Autoría
+
+Este laboratorio ha sido desarrollado por:
+
+*   **Nombre:** Andre Reboulet
+*   **Correo:** andre.reboulet@utp.ac.pa
+*   **Curso:** Desarrollo de Software VII en el grupo 1GS131
+*   **Instructor del Laboratorio:** Irina Fong
