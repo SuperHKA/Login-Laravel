@@ -6,7 +6,7 @@ Para la ejecución de este laboratorio se requiere el siguiente ecosistema de de
 
 *   **PHP:** Versión 8.0 o superior ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=flat&logo=php&logoColor=white)
 *   **Composer:** Última versión estable ![Composer](https://img.shields.io/badge/composer-%23000000.svg?style=flat&logo=composer&logoColor=white)
-*   **Laravel:** Creado con `composer create-project laravel/laravel` ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white)
+*   **Laravel:** Creado con `composer require laravel/ui` ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=flat&logo=laravel&logoColor=white)
 *   **Entorno Local:** Paquete de servidor web local (WampServer) ![WampServer](https://img.shields.io/badge/wampserver-%23FF0000.svg?style=flat&logo=wamp&logoColor=white)
 *   **Servidor Web:** Apache
 *   **Base de Datos:** MySQL / MariaDB ![MySQL](https://img.shields.io/badge/mysql-%2300000f.svg?style=flat&logo=mysql&logoColor=white)
