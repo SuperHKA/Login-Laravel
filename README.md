@@ -91,8 +91,14 @@ php artisan migrate
 
 ## 5. Resultado del Laboratorio
 
-![Resultado de Autenticación]()
-*(Nota: Inserte aquí la imagen con el resultado visible de la pantalla de Login/Registro)*
+**Pantalla de Inicio (Home):**
+![Pantalla de Inicio](images/image.png)
+
+**Pantalla de Inicio de Sesión (Login):**
+![Pantalla de Login](images/image2.png)
+
+**Pantalla de Registro (Register):**
+![Pantalla de Registro](images/image3.png)
 
 ---
 
