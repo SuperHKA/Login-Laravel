@@ -1,6 +1,6 @@
 # Laboratorio: Autenticación en Laravel
 
-## 1. Prerrequisitos (Entorno de Desarrollo)
+# 1. Prerrequisitos (Entorno de Desarrollo)
 
 Para la ejecución de este laboratorio se requiere el siguiente ecosistema de desarrollo:
 
@@ -16,7 +16,7 @@ Para la ejecución de este laboratorio se requiere el siguiente ecosistema de de
 
 ---
 
-## 2. Introducción y Objetivo del Laboratorio
+# 2. Introducción y Objetivo del Laboratorio
 
 **Objetivo:** Implementar un sistema de autenticación utilizando Laravel, configurando la base de datos, migraciones y dependencias necesarias para gestionar el registro y acceso de usuarios.
 
@@ -32,7 +32,7 @@ La arquitectura Modelo-Vista-Controlador (MVC) organiza el código en tres capas
 
 ---
 
-## 3. Instalación de Dependencias y Configuración
+# 3. Instalación de Dependencias y Configuración
 
 Secuencia de comandos utilizados para la instalación del proyecto y dependencias de autenticación:
 
@@ -56,9 +56,9 @@ php artisan serve
 
 ---
 
-## 4. Base de Datos, Entorno y Migraciones
+# 4. Base de Datos, Entorno y Migraciones
 
-**Configuración del entorno (.env):**
+## **Configuración del entorno (.env):**
 Se configuraron las credenciales de la base de datos MySQL en el archivo `.env` del proyecto:
 (Puede llamar a la base de datos "laravel")
 
@@ -71,25 +71,25 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-**Migraciones:**
+## **Migraciones:**
 Laravel utiliza migraciones para controlar las versiones de la base de datos. Para construir las tablas requeridas por el sistema de autenticación, se ejecutó el siguiente comando:
 
 ```bash
 php artisan migrate
 ```
 
-**Problemas con la base de datos no creándose porque ya existe o tiene una configuración incorrecta:**
-# Esto borra toda la base de datos.
+## **Problemas con la base de datos no creándose porque ya existe o tiene una configuración incorrecta:**
+### Esto borra toda la base de datos.
 ```bash
 php artisan db:wipe
 ```
-# y después corre 
+y después corre 
 ```bash
 php artisan migrate
 ```
 ---
 
-## 5. Resultado del Laboratorio
+# 5. Resultado del Laboratorio
 
 **Pantalla de Inicio (Home):**
 ![Pantalla de Inicio](images/image.png)
@@ -102,7 +102,7 @@ php artisan migrate
 
 ---
 
-## 6. Dificultades y Soluciones
+# 6. Dificultades y Soluciones
 
 *   **Desafío:** (Ejemplo: Archivo .env no configurado correctamente al inicio).
 *   **Solución:** (Ejemplo: Revisión y ajuste de los puertos y credenciales de MySQL en el sistema WampServer).
@@ -112,20 +112,20 @@ php artisan migrate
 
 ---
 
-## 7. Referencias
+# 7. Referencias
 
 *   Documentación Oficial de Laravel: https://laravel.com/docs
 *   Material de apoyo del curso.
 
 ---
 
-## 8. Fecha de Ejecución del Laboratorio
+# 8. Fecha de Ejecución del Laboratorio
 
 **Fecha:** 8 de abril de 2026
 
 ---
 
-## 9. Autoría
+# 9. Autoría
 
 Este laboratorio ha sido desarrollado por:
 
