@@ -115,7 +115,9 @@ php artisan migrate
 # 7. Referencias
 
 *   Documentación Oficial de Laravel: https://laravel.com/docs
-*   Material de apoyo del curso.
+*   Documentación Oficial de Composer: https://getcomposer.org/doc/
+*   Material de apoyo del curso. 
+![Guia de laboratorio de Login](images/Guía%20del%20Laboratorio%20de%20Login%20en%20Laravel%20(1).pdf)
 
 ---
 
